@@ -155,7 +155,32 @@
       "Bist du dir sicher, dass du dir sicher bist?",
       "Bitte Schatz 🥺",
       "Was soll das🥺",
-      "Letzte Chance! 😤"
+      "Letzte Chance! 😤",
+      "wirklich letzte Chance",
+      "allerletzte Chance",
+      "allerallerletzte",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Wow",
+      "Drück jetzt Ja du Doofbacke"
     ];
 
     let noClickCount = 0;
@@ -164,15 +189,15 @@
     const yesBtn = document.getElementById("yesBtn");
     const yesScreen = document.getElementById("yesScreen");
 
-    noBtn.addEventListener("click", () => {
-      const msgIndex = noClickCount % noMessages.length;
-      messageEl.textContent = noMessages[msgIndex];
+noBtn.addEventListener("click", () => {
+  const msgIndex = noClickCount % noMessages.length;
+  messageEl.textContent = noMessages[msgIndex];
 
-      // Button jedes Mal kleiner machen, aber nicht komplett verschwinden lassen
-      const scaleFactor = Math.max(0.2, 1 - noClickCount * 0.08);
-      noBtn.style.transform = "scale(" + scaleFactor + ")";
-      noClickCount++;
-    });
+  // Button wird immer kleiner, keine untere Grenze
+  const scaleFactor = 1 - noClickCount * 0.08;
+  noBtn.style.transform = "scale(" + scaleFactor + ")";
+  noClickCount++;
+});
 
     yesBtn.addEventListener("click", () => {
       yesScreen.style.display = "flex";
