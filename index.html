@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Will you be my Valentine?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #ffe6f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding: 16px;
+    }
+
+    .container {
+      max-width: 500px;
+      background: #ffffffcc;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-top: 16px;
+      margin-bottom: 24px;
+      font-size: 1.8rem;
+      color: #e60073;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 10px 24px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4b8b;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      background-color: #ff336f;
+      transform: scale(1.05);
+    }
+
+    #noBtn {
+      background-color: #ffffff;
+      color: #ff4b8b;
+      border: 2px solid #ff4b8b;
+    }
+
+    #noBtn:hover {
+      background-color: #ffe6f0;
+      transform: scale(1.05);
+    }
+
+    #message {
+      margin-top: 16px;
+      font-size: 1.1rem;
+      color: #e60073;
+      min-height: 1.4em;
+    }
+
+    /* Screen nach "Ja" */
+    #yesScreen {
+      position: fixed;
+      inset: 0;
+      background-color: #000000d0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 10;
+    }
+
+    #yesScreenInner {
+      max-width: 500px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    #yesScreenInner h2 {
+      color: #e60073;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="mainScreen">
+    <!-- GIF oben -->
+    <div class="tenor-gif-embed"
+         data-postid="8795433616278834350"
+         data-share-method="host"
+         data-aspect-ratio="0.935829"
+         data-width="100%">
+      <a href="https://tenor.com/view/reaction-meme-stan-twt-funny-buckspendragon-minion-gif-8795433616278834350">
+        Reaction Meme Stan Twt GIF
+      </a>from
+      <a href="https://tenor.com/search/reaction+meme-gifs">Reaction Meme GIFs</a>
+    </div>
+
+    <h1>Will you be my Valentine?</h1>
+
+    <div id="message"></div>
+
+    <div class="buttons">
+      <button id="yesBtn">Ja 🥰</button>
+      <button id="noBtn">Nein 😈</button>
+    </div>
+  </div>
+
+  <!-- Screen nach "Ja" -->
+  <div id="yesScreen">
+    <div id="yesScreenInner">
+      <div class="tenor-gif-embed"
+           data-postid="15390971472931965293"
+           data-share-method="host"
+           data-aspect-ratio="0.951807"
+           data-width="100%">
+        <a href="https://tenor.com/view/fireworks-exploding-heart-exploding-hearts-hearts-fireworks-hearts-gif-15390971472931965293">
+          Fireworks Exploding Heart GIF
+        </a>from
+        <a href="https://tenor.com/search/fireworks-gifs">Fireworks GIFs</a>
+      </div>
+      <h2>Yaaay! ❤️</h2>
+      <p>Du hast Ja gesagt, ich liebe dich! 🥺✨</p>
+    </div>
+  </div>
+
+  <!-- Tenor Script -->
+  <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+  <script>
+    const noMessages = [
+      "Bist du dir sicher?",
+      "Bist du dir sicher, dass du dir sicher bist?",
+      "Bitte Schatz 🥺",
+      "Was soll das🥺",
+      "Letzte Chance! 😤"
+    ];
+
+    let noClickCount = 0;
+    const messageEl = document.getElementById("message");
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const yesScreen = document.getElementById("yesScreen");
+
+    noBtn.addEventListener("click", () => {
+      const msgIndex = noClickCount % noMessages.length;
+      messageEl.textContent = noMessages[msgIndex];
+
+      // Button jedes Mal kleiner machen, aber nicht komplett verschwinden lassen
+      const scaleFactor = Math.max(0.2, 1 - noClickCount * 0.08);
+      noBtn.style.transform = "scale(" + scaleFactor + ")";
+      noClickCount++;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      yesScreen.style.display = "flex";
+    });
+  </script>
+</body>
+</html>
